@@ -35,7 +35,7 @@ module PrimesMultTable
     table.each_with_index do |a, indx|
       print(primes[indx].to_s.rjust(width-2) + " |")
 
-      puts a.map { |i| print i.to_s.rjust(width) }.join
+      puts a.map { |i| i.to_s.rjust(width) }.join
     end
     puts "\n"
   end
