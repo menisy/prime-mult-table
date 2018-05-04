@@ -38,7 +38,7 @@ module PrimesGenerator
     primes
   end
 
-    def self.n_primes_opt(n=10)
+  def self.n_primes_opt(n=10)
     # seed primes array with the first prime
     primes = [FIRST_PRIME]
     # init i with first prime
