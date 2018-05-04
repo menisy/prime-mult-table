@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative 'primes_generator'
+require_relative 'benchmarks'
 
 module PrimesMultTable
 
@@ -18,8 +19,8 @@ module PrimesMultTable
     table
   end
 
-  def self.print_table(arg)
-    n = arg ? arg.to_i : 10
+  def self.print_table(options)
+    n = options[:number].to_i
 
     return puts "Invalid n, please use n > 1" if n < 1
 
@@ -38,9 +39,39 @@ module PrimesMultTable
       puts a.map { |i| i.to_s.rjust(width) }.join
     end
     puts "\n"
-  end
 
+    # print benchmarks if required by options
+    if(options[:benchmarks])
+        benchmarks(n)
+    end
+  end
 end
 
+require 'optparse'
+# Parse command line arguments
+options = {}
+optparse = OptionParser.new do|opts|
 
-PrimesMultTable.print_table(ARGV[0])
+  opts.banner = "Usage: primes_mult_table.rb [options]"
+
+
+  options[:number] = 10
+  opts.on( '-n', '--number Integer', 'Number of primes (integer > 0), default is 10' ) do |number|
+    options[:number] = number
+  end
+
+  options[:benchmarks] = false
+  opts.on( '-b', '--benchmarks', 'Run benchmarks, default is false' ) do
+    options[:benchmarks] = true
+  end
+
+  opts.on( '-h', '--help', 'Usage and options help' ) do
+    puts opts
+    exit
+  end
+end
+
+optparse.parse!
+
+PrimesMultTable.print_table(options)
+
