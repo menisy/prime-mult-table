@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'assert'
 require 'prime'
-require 'benchmark'
 require_relative 'primes_generator'
 
 class PrimesTests < Assert::Context
@@ -19,19 +18,4 @@ class PrimesTests < Assert::Context
                   Prime.first(i)
     end
   end
-
-
-  def test_benchmarks
-    Benchmark.bm do |bm|
-      puts "Naive Prime Generator for n = 10000"
-      bm.report{PrimesGenerator.n_primes(10000, false)}
-
-      puts "Optimized Prime Generator for n = 10000"
-      bm.report{PrimesGenerator.n_primes(10000)}
-
-      puts "Ruby's Sieve Prime Generator for n = 10000"
-      bm.report{Prime.first(10000)}
-    end
-  end
-
 end
