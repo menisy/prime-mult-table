@@ -29,10 +29,13 @@ $ ruby primes_mult_table.rb
 or
 
 ```
-$ ruby primes_mult_table.rb 20
+$ ruby primes_mult_table.rb -n 20 -b
 ```
 
-The number parameter is optional, if not set, the generator assumes a default value of 10.
+Where -n is the number of primes to be generated for the multiplication table (optional), if not set, the generator assumes a default value of 10.
+
+-b is to display the benchmarks of different implementations (optional), default is false
+
 
 ### Running as executable
 
@@ -50,10 +53,12 @@ $ ./primes_mult_table.rb
 or
 
 ```
-$ ./primes_mult_table.rb 20
+$ ./primes_mult_table.rb -n 20 -b
 ```
 
-The number parameter is optional, if not set, the generator assumes a default value of 10.
+Where -n is the number of primes to be generated for the multiplication table (optional), if not set, the generator assumes a default value of 10.
+
+-b is to display the benchmarks of different implementations (optional), default is false
 
 ## Running tests
 
@@ -63,6 +68,5 @@ From root folder run:
 $ assert prime_tests
 ```
 
-The tests include a comparison of the bench marks between this script's prime number generator and
-ruby's Prime class for different values of n.
+The tests compare the generated primes with ruby's implementation of Prime class.
 
